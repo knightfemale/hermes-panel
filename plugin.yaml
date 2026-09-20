@@ -1,3 +1,21 @@
 name: hermes-panel
 version: 0.1.0
 description: "Custom cache-safe suffix panel for Hermes Agent."
+manifest_version: 2
+config_schema:
+  script:
+    type: string
+    default: ""
+    description: "Absolute path to a Python script that prints this turn's panel as JSON. Empty keeps the plugin inert."
+  timeout_seconds:
+    type: number
+    default: 5.0
+    description: "Seconds the script may run before it is killed and its reply discarded (clamped to 20)."
+  max_chars:
+    type: integer
+    default: 300
+    description: "Longest panel accepted; a longer one is discarded rather than truncated (clamped to 2000)."
+  allowed_roots:
+    type: array
+    default: []
+    description: "Directories the script path must resolve inside. Empty keeps the plugin directory and /run/secrets."
